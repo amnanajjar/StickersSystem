@@ -12,10 +12,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
-    <Window.DataContext>
-        <viewmodels:PrintViewModel/>
-    </Window.DataContext>
-    
+   
     <Grid>
 
         <Grid.RowDefinitions>

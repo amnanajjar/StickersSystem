@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StickersSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace StickersSystem.Views
     {
         public ItemsView()
         {
+            DataContext = new ItemsViewModel();
             InitializeComponent();
         }
     }

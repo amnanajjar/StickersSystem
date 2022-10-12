@@ -87,5 +87,14 @@
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
-   
+    <!-- Menu Item-->
+    <Style TargetType="MenuItem">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+
+    <!-- Menu -->
+    <Style TargetType="Menu">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    
 </ResourceDictionary>

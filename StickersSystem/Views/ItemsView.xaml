@@ -10,11 +10,6 @@
         WindowStartupLocation="CenterScreen"
         Height="800" 
         Width="800">
-
-    <Window.DataContext>
-        <viewmodels:ItemsViewModel/>
-    </Window.DataContext>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -47,7 +42,8 @@
                 Content="اضافة صنف"
                 Style="{StaticResource buttonStyle}"
                 Width="150"
-                HorizontalAlignment="Left"/>
+                HorizontalAlignment="Left"
+                Command="{Binding AddItemCommand}"/>
 
         <!-- List of Items Titles -->
         <Grid Grid.Row="5"
@@ -118,24 +114,19 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="20"/>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="#"
-                                   Grid.Column="0"
-                                   FontSize="14"
-                                   FontWeight="Bold"/>
+                        <TextBlock Text=""
+                                   Grid.Column="0"/>
 
 
                         <TextBlock Text="{Binding Name}"
-                                   Grid.Column="2"
-                                   FontSize="14"
-                                   FontWeight="Bold"/>
+                                   Grid.Column="2"/>
 
                         <TextBlock Text="{Binding Number}"
-                                   Grid.Column="4" 
-                                   FontSize="14"
-                                   FontWeight="Bold"/>
+                                   Grid.Column="4" />
 
                         <Image Grid.Column="6"
                                Source="{Binding Barcode}"/>
@@ -143,20 +134,20 @@
                         <Image Grid.Column="8"
                                Source="{Binding Image}"/>
 
-                        <Menu Grid.Row="10">
+                        <Menu Grid.Column="10">
                             <MenuItem BorderThickness="0" 
                                       Header="الخيارات">
                                 
                                 <MenuItem Header="طباعة" 
-                                          Command = "{Binding Path=DataContext.DeletePatientCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                          Command = "{Binding Path=DataContext.PrintItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                                           CommandParameter="{Binding Id}"/>
 
                                 <MenuItem Header="تعديل" 
-                                          Command = "{Binding Path=DataContext.DeletePatientCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                          Command = "{Binding Path=DataContext.EditItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                                           CommandParameter="{Binding Id}"/>
 
                                 <MenuItem Header="حذف" 
-                                          Command = "{Binding Path=DataContext.DeletePatientCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                          Command = "{Binding Path=DataContext.DeleteItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                                           CommandParameter="{Binding Id}"/>
                                
                             </MenuItem>
