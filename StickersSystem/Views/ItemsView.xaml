@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:StickersSystem.Views"
         mc:Ignorable="d"
         FlowDirection="RightToLeft"
-        Height="450" 
+        WindowStartupLocation="CenterScreen"
+        Height="800" 
         Width="800">
 
     <Grid>
@@ -124,7 +125,24 @@
 
                         <Image Grid.Column="6"/>
 
+                        <Menu Grid.Row="8">
+                            <MenuItem BorderThickness="0" 
+                                      Header="الخيارات">
+                                
+                                <MenuItem Header="طباعة" 
+                                          Command = "{Binding Path=DataContext.DeletePatientCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                          CommandParameter="{Binding Id}"/>
 
+                                <MenuItem Header="تعديل" 
+                                          Command = "{Binding Path=DataContext.DeletePatientCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                          CommandParameter="{Binding Id}"/>
+
+                                <MenuItem Header="حذف" 
+                                          Command = "{Binding Path=DataContext.DeletePatientCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                          CommandParameter="{Binding Id}"/>
+                               
+                            </MenuItem>
+                        </Menu>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
