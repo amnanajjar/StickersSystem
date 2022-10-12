@@ -4,11 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StickersSystem.Views"
+        xmlns:viewmodels="clr-namespace:StickersSystem.ViewModels"
         mc:Ignorable="d"
         FlowDirection="RightToLeft"
         WindowStartupLocation="CenterScreen"
         Height="800" 
         Width="800">
+
+    <Window.DataContext>
+        <viewmodels:ItemsViewModel/>
+    </Window.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -95,11 +100,16 @@
 
         <!-- List of Items -->
         <ItemsControl Grid.Row="7"
-                      Grid.Column="1">
+                      Grid.Column="1"
+                      ItemsSource="{Binding Items}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
@@ -111,21 +121,29 @@
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="الاسم"
+                        <TextBlock Text="#"
                                    Grid.Column="0"
                                    FontSize="14"
                                    FontWeight="Bold"/>
 
-                        <TextBlock Text="الرقم"
-                                   Grid.Column="2" 
+
+                        <TextBlock Text="{Binding Name}"
+                                   Grid.Column="2"
                                    FontSize="14"
                                    FontWeight="Bold"/>
 
-                        <Image Grid.Column="4"/>
+                        <TextBlock Text="{Binding Number}"
+                                   Grid.Column="4" 
+                                   FontSize="14"
+                                   FontWeight="Bold"/>
 
-                        <Image Grid.Column="6"/>
+                        <Image Grid.Column="6"
+                               Source="{Binding Barcode}"/>
 
-                        <Menu Grid.Row="8">
+                        <Image Grid.Column="8"
+                               Source="{Binding Image}"/>
+
+                        <Menu Grid.Row="10">
                             <MenuItem BorderThickness="0" 
                                       Header="الخيارات">
                                 

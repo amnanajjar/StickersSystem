@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StickersSystem.Views"
+        xmlns:viewmodels="clr-namespace:StickersSystem.ViewModels"
         mc:Ignorable="d" 
         FlowDirection="RightToLeft"     
         Height="550" 
@@ -11,6 +12,11 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
+    <Window.DataContext>
+        <viewmodels:AddItemViewModel/>
+    </Window.DataContext>
+
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -48,7 +54,7 @@
                Grid.Row="3"
                 Style="{StaticResource labelStyle}"/>
 
-        <TextBox  Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" 
+        <TextBox  Text="{Binding Item.Name, UpdateSourceTrigger=PropertyChanged}" 
                   Style="{StaticResource textBoxStyle}"
                   Grid.Column="1"
                   Grid.Row="4"/>
@@ -59,7 +65,7 @@
                Grid.Row="6"
                Style="{StaticResource labelStyle}"/>
 
-        <TextBox  Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" 
+        <TextBox  Text="{Binding Item.Number, UpdateSourceTrigger=PropertyChanged}" 
                   Style="{StaticResource textBoxStyle}"
                   Grid.Column="1"
                   Grid.Row="7"/>
@@ -73,7 +79,7 @@
         <StackPanel Grid.Column="1"
                     Grid.Row="10">
 
-            <Image Source="{StaticResource lockIcon}"
+            <Image Source="{Binding Item.Image}"
                    HorizontalAlignment="Left"
                    Height="100"
                    Width="100"
@@ -84,13 +90,14 @@
                  Height="30"
                  Background="White"
                  BorderBrush="{DynamicResource borderGray}"
-                 HorizontalAlignment="Left"/>
+                 HorizontalAlignment="Left"
+                     Command="{Binding BrowseImageCommand}"/>
         </StackPanel>
 
         <!-- Save Button -->
         <Button  Grid.Row="12" 
                  Grid.Column="1" 
-                 Command="{Binding SaveCommand}"
+                 Command="{Binding SaveItemCommand}"
                  Style="{StaticResource buttonStyle}" 
                  Width="150"
                  HorizontalAlignment="Right"

@@ -4,12 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StickersSystem.Views"
+        xmlns:viewmodels="clr-namespace:StickersSystem.ViewModels"
         mc:Ignorable="d"
         FlowDirection="RightToLeft"     
         Height="550"
         Width="600" 
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
+
+    <Window.DataContext>
+        <viewmodels:PrintViewModel/>
+    </Window.DataContext>
     
     <Grid>
 
@@ -49,7 +54,8 @@
                Style="{StaticResource labelStyle}"/>
 
         <DatePicker Grid.Column="1"
-                    Grid.Row="4"/>
+                    Grid.Row="4"
+                    SelectedDate="{Binding Print.FillDate}"/>
 
         <!-- Production Date -->
         <Label Content="تاريخ الإنتاج" 
@@ -58,7 +64,8 @@
                Style="{StaticResource labelStyle}"/>
 
         <DatePicker Grid.Column="1"
-                    Grid.Row="7"/>
+                    Grid.Row="7"
+                    SelectedDate="{Binding Print.ProductionDate}"/>
 
         <!-- Expire Date -->
         <Label Content="تاريخ الصلاحية" 
@@ -67,7 +74,8 @@
                Style="{StaticResource labelStyle}"/>
 
         <DatePicker Grid.Column="1"
-                    Grid.Row="10"/>
+                    Grid.Row="10"
+                    SelectedDate="{Binding Print.FillDate}"/>
 
         <!-- Print Buttons -->
         <Grid Grid.Row="12"
@@ -81,7 +89,7 @@
 
             <!-- Print -->
             <Button  Grid.Column="2" 
-                 Command="{Binding SaveCommand}"
+                 Command="{Binding PrintCommand}"
                  Style="{StaticResource buttonStyle}" 
                  Width="150"
                  HorizontalAlignment="Right"
@@ -96,7 +104,7 @@
 
             <!-- Print Preview -->
             <Button  Grid.Column="0" 
-                 Command="{Binding SaveCommand}"
+                 Command="{Binding PrintPreviewCommand}"
                  Style="{StaticResource buttonStyle}" 
                  Width="150"
                  HorizontalAlignment="Right"
